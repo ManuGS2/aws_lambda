@@ -16,7 +16,7 @@ class AwsLambdaStack extends Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    new lambda.DockerImageFunction(scope, 'PythonLambda', {
+    new lambda.DockerImageFunction(this, 'PythonLambda', {
       description: 'Simple Lambda written in Python',
       functionName: `${props.env.stackName}-python-lambda`,
       architecture: lambda.Architecture.X86_64,
