@@ -1,0 +1,14 @@
+{
+  "name": "aws_lambda",
+  "version": "1.0.0",
+  "description": "This application holds the infra for an AWS lambda written in Go",
+  "scripts": {
+    "test": "echo \"Hola\"",
+    "deploy": "NODE_CONFIG_DIR=./cdk/config npx cdk deploy --require-approval never"
+  },
+  "dependencies": {
+    "aws-cdk": "^2.43.1",
+    "aws-cdk-lib": "^2.43.1",
+    "constructs": "^10.1.110"
+  }
+}
