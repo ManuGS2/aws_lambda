@@ -1,5 +1,9 @@
 const { Stack, Duration } = require('aws-cdk-lib');
-// const sqs = require('aws-cdk-lib/aws-sqs');
+const { Construct } = require('constructs');
+const { RetentionDays } = require('aws-cdk-lib/aws-logs');
+
+const lambda = require('aws-cdk-lib/aws-lambda');
+const path = require('path');
 
 class AwsLambdaStack extends Stack {
   /**
@@ -12,6 +16,24 @@ class AwsLambdaStack extends Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
+    new lambda.DockerImageFunction(scope, 'PythonLambda', {
+      description: 'Simple Lambda written in Python',
+      functionName: `${props.env.stackName}-python-lambda`,
+      architecture: lambda.Architecture.X86_64,
+      timeout: Duration.minutes(1),
+      memorySize: 128,
+      // role: externalResources.lambdaRole,
+      // vpc: externalResources.appLambdaVpc,
+      // securityGroups: externalResources.appLambdaSecurityGroups,
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, './../../python_lambda'), {
+          exclude: ['Dockerfile'],
+          file: './Dockerfile'
+      }),
+      environment: {
+          REGION: props.env.region,
+      },
+      logRetention: RetentionDays.ONE_WEEK
+  });
 
     // example resource
     // const queue = new sqs.Queue(this, 'AwsLambdaQueue', {

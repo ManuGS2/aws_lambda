@@ -27,6 +27,8 @@ the run npm ci to do a clean install of the resources
 After that then we need to create the cdk project running the next command
 **NOTE: Dir must be empty, so this should be the very first step or you can just create all the files manually**
 cdk init
+Once the cdk project is created, customize it according to the specific needs
+
 
 
 
