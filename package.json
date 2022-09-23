@@ -1,14 +1,19 @@
 {
   "name": "aws_lambda",
   "version": "1.0.0",
-  "description": "This application holds the infra for an AWS lambda written in Go",
+  "bin": {
+    "aws_lambda": "bin/aws_lambda.js"
+  },
   "scripts": {
-    "test": "echo \"Hola\"",
-    "deploy": "NODE_CONFIG_DIR=./cdk/config npx cdk deploy --require-approval never"
+    "deploy": "NODE_CONFIG_DIR=./cdk/config npx cdk deploy --require-approval never",
+    "test": "echo Hola"
+  },
+  "devDependencies": {
+    "aws-cdk": "2.43.1",
+    "jest": "^27.5.1"
   },
   "dependencies": {
-    "aws-cdk": "^2.43.1",
-    "aws-cdk-lib": "^2.43.1",
-    "constructs": "^10.1.110"
+    "aws-cdk-lib": "2.43.1",
+    "constructs": "^10.0.0"
   }
 }
