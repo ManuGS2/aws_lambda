@@ -2,7 +2,7 @@
   "name": "aws_lambda",
   "version": "1.0.0",
   "bin": {
-    "aws_lambda": "bin/aws_lambda.js"
+    "aws_lambda": "cdk/bin/app.js"
   },
   "scripts": {
     "deploy": "NODE_CONFIG_DIR=./cdk/config npx cdk deploy --require-approval never",

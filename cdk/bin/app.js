@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const cdk = require('aws-cdk-lib');
-const { AwsLambdaStack } = require('../lib/aws_lambda-stack');
+const { AwsLambdaStack } = require('../lib/stack');
 
 const app = new cdk.App();
 new AwsLambdaStack(app, 'AwsLambdaStack', {

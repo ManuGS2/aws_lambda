@@ -1,5 +1,5 @@
 {
-  "app": "node bin/aws_lambda.js",
+  "app": "node cdk/bin/app.js",
   "watch": {
     "include": [
       "**"
