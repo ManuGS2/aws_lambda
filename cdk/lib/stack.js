@@ -45,13 +45,19 @@ class AwsLambdaStack extends Stack {
       memorySize: 128,
       runtime: lambda.Runtime.GO_1_X,
       code: lambda.Code.fromAsset(path.join(__dirname, './../../go_lambda_zip'), {
-        image: lambda.Runtime.GO_1_X.bundlingImage,
-        command: [
-          'bash', '-c',
-          'make build-lambda'
-        ]
+        bundling: {
+          image: lambda.Runtime.GO_1_X.bundlingImage,
+          command: [
+            'bash', '-c', 
+            'make build-lambda'
+          ]
+        }
       }),
       handler: 'bootstrap',
+      environment: {
+        REGION: props.env.region,
+      },
+      logRetention: RetentionDays.ONE_WEEK
     });
 
     // new lambda.DockerImageFunction(this, 'GoLambdaZip', {
