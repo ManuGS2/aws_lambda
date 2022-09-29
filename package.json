@@ -6,6 +6,7 @@
   },
   "scripts": {
     "deploy": "NODE_CONFIG_DIR=./cdk/config npx cdk deploy --require-approval never",
+    "synth": "NODE_CONFIG_DIR=./cdk/config npx cdk synth",
     "test": "echo Hola"
   },
   "devDependencies": {
