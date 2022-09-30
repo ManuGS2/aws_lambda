@@ -47,9 +47,13 @@ class AwsLambdaStack extends Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, './../../go_lambda_zip'), {
         bundling: {
           image: lambda.Runtime.GO_1_X.bundlingImage,
+          user: "root",
           command: [
             'bash', '-c', 
-            'make build-lambda'
+            [
+              'make build-vendor',
+              'make build-lambda'
+            ].join(' && ')
           ]
         }
       }),
